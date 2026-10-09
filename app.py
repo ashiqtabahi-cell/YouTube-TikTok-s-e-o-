@@ -8,11 +8,12 @@ st.set_page_config(
 
 st.title("🚀 YouTube & TikTok SEO & Content Generator")
 st.write(
-    "Apne video ke liye professional Titles, Descriptions, aur Tags generate karein!"
+    "Apne video ke liye professional Titles, Descriptions, aur Tags generate"
+    " karein!"
 )
 
-# Groq API Key hardcode kar di hai jo aapne di hai
-API_KEY = "Gsk_EfDE6gaDr57pl7xbUbFaWGdyb3FYpL92u1mYVfsLjz5aZe1XmN5V"
+# Nayi Groq API Key
+API_KEY = "Gsk_LfeXxaft5vdZBEflIor4WGdyb3FY1pOXt19ElHziuDiGsTKp7tSW"
 
 # Initialize Groq client
 client = Groq(api_key=API_KEY)
@@ -51,6 +52,7 @@ if st.button("Generate SEO Content"):
 
       except Exception as e:
         st.error(f"Koi error aa gaya hai: {e}")
+          
           
         
         
