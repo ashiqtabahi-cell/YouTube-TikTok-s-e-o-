@@ -9,7 +9,8 @@ st.title("🚀 AI YouTube & TikTok SEO Generator")
 st.write("Apna video topic ya keyword niche likhein aur ek click mein viral SEO hasil karein!")
 
 # API Key Configuration
-AQ.Ab8RN6Ig_2VgV7iwmlbaJK--jqbz7ahiSa6VTj8WZQyBLrHeRQ
+API_KEY = "AQ.Ab8RN6Ig_2VgV7iwmlbaJK--jqbz7ahiSa6VTj8WZQyBLrHeRQ"
+
 
 if API_KEY == "YAHAN_APNI_GEMINI_API_KEY_LIKHEIN" or not API_KEY:
     st.warning("⚠️ Pehle apni Gemini API Key code mein add karein!")
