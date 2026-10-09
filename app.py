@@ -9,12 +9,10 @@ st.title("🚀 AI YouTube & TikTok SEO Generator")
 st.write("Apna video topic ya keyword niche likhein aur ek click mein viral SEO hasil karein!")
 
 # API Key Configuration
-AQ.Ab8RN6KyRZvUtxg3Tt8OvK9xOHl_VHmeElIUG1FmUkHQf1yxXw)
-else:
+API_KEY = "AQ.Ab8RN6KyRZvUtxg3Tt8OvK9xOHl_VHmeElIUG1FmUkHQf1yxXw"
 
-if"Apni_Nayi_API_Key_Yahan_Likhein"
-
-
+if not API_KEY:
+    st.warning("⚠️ Pehle apni Gemini API key code mein add karein!")
 else:
     genai.configure(api_key=API_KEY)
     model = genai.GenerativeModel('gemini-1.5-flash')
@@ -31,7 +29,7 @@ else:
                 # Prompt design for AI
                 prompt = f"""
                 Act as a professional Video SEO Expert. Generate SEO data for the topic: '{video_topic}' for platform: '{platform}'.
-                Provide fieldValue the output in the following clean format:
+                Provide the output in the following clean format:
                 
                 1. Catchy Titles (3 options)
                 2. Optimized Description (with placeholders for links and relevant keywords)
@@ -51,4 +49,4 @@ else:
                 st.error(f"Koi error aa gaya: {e}")
     elif submit_btn:
         st.error("Pehle please koi topic likhein!")
-  
+                
