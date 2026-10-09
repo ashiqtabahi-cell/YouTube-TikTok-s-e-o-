@@ -12,7 +12,9 @@ st.write("Apna video topic ya keyword niche likhein aur ek click mein viral SEO 
 AQ.Ab8RN6KyRZvUtxg3Tt8OvK9xOHl_VHmeElIUG1FmUkHQf1yxXw)
 else:
 
-if AQ.Ab8RN6KyRZvUtxg3Tt8OvK9xOHl_VHmeElIUG1FmUkHQf1yxXw)
+if"Apni_Nayi_API_Key_Yahan_Likhein"
+
+
 else:
     genai.configure(api_key=API_KEY)
     model = genai.GenerativeModel('gemini-1.5-flash')
