@@ -9,7 +9,8 @@ st.title("🚀 AI YouTube & TikTok SEO Generator")
 st.write("Apna video topic ya keyword niche likhein aur ek click mein viral SEO hasil karein!")
 
 # API Key Configuration
-
+AQ.Ab8RN6KyRZvUtxg3Tt8OvK9xOHl_VHmeElIUG1FmUkHQf1yxXw)
+else:
 
 if AQ.Ab8RN6KyRZvUtxg3Tt8OvK9xOHl_VHmeElIUG1FmUkHQf1yxXw)
 else:
