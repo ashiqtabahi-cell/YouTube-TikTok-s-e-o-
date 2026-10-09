@@ -9,11 +9,9 @@ st.title("🚀 AI YouTube & TikTok SEO Generator")
 st.write("Apna video topic ya keyword niche likhein aur ek click mein viral SEO hasil karein!")
 
 # API Key Configuration
-API_KEY = "AQ.Ab8RN6Ig_2VgV7iwmlbaJK--jqbz7ahiSa6VTj8WZQyBLrHeRQ"
 
 
-if API_KEY == "YAHAN_APNI_GEMINI_API_KEY_LIKHEIN" or not API_KEY:
-    st.warning("⚠️ Pehle apni Gemini API Key code mein add karein!")
+if AQ.Ab8RN6KyRZvUtxg3Tt8OvK9xOHl_VHmeElIUG1FmUkHQf1yxXw)
 else:
     genai.configure(api_key=API_KEY)
     model = genai.GenerativeModel('gemini-1.5-flash')
