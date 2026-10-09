@@ -2,78 +2,81 @@ import streamlit as st
 
 # Page configuration
 st.set_page_config(
-    page_title="YouTube & TikTok SEO Generator", page_icon="🚀", layout="centered"
+    page_title="Universal YouTube & TikTok SEO Generator",
+    page_icon="🌍",
+    layout="centered",
 )
 
-st.title("🚀 YouTube & TikTok Professional SEO Generator")
+st.title("🌍 Universal Multi-Language SEO Generator")
 st.write(
-    "Apne video ke liye mukammal aur professional Titles, Description, aur"
-    " Hashtags generate karein!"
+    "Duniya ki kisi bhi zuban mein apnay video ke liye Titles, Detailed"
+    " Descriptions, aur Tags generate karein!"
 )
 
 # User inputs
 topic = st.text_input(
-    "Apne video ka topic ya idea yahan likhein:",
-    placeholder="e.g., How to grow fast on TikTok in 2026",
+    "Apnay video ka topic ya title kisi bhi zuban mein likhein:",
+    placeholder="e.g., Pakistan ka mustaqbil, How to code in Python, إلخ",
 )
 platform = st.selectbox("Platform chunein:", ["YouTube", "TikTok"])
-language = st.selectbox(
-    "Language chunein:", ["English", "Urdu / Roman Hindi"]
-)
 
-if st.button("Generate Professional SEO"):
+if st.button("Generate Universal SEO"):
   if topic.strip() == "":
-    st.warning("Pehle koi topic ya idea zaroor likhein!")
+    st.warning("Pehle koi topic ya title zaroor likhein!")
   else:
-    with st.spinner("Professional SEO content taiyar ho raha hai..."):
+    with st.spinner(
+        "Har zuban ke liye behtareen SEO content taiyar ho raha hai..."
+    ):
       st.success("🎉 Aapka mukammal SEO content taiyar hai!")
 
-      # Detailed Professional Output based on platform
+      clean_topic = topic.strip()
+      tag_topic = clean_topic.replace(" ", "")
+
       if platform == "YouTube":
-        st.subheader("📌 Catchy YouTube Titles:")
+        st.subheader("📌 YouTube Titles (Catchy & SEO Friendly):")
         st.write(
-            f"1. Ultimate Guide to Master {topic} (Step-by-Step for 2026)\n2."
-            f" Why Everyone is Wrong About {topic}! (Must Watch)\n3. How to"
-            f" Get Started With {topic} and Grow Fast"
+            f"1. Complete Guide to {clean_topic} (2026 Ultimate Guide)\n2. Why"
+            f" Everyone is Talking About {clean_topic}! (Must Watch)\n3. How to"
+            f" Master {clean_topic} Step-by-Step"
         )
 
         st.subheader("📝 Detailed YouTube Description:")
         st.write(
-            f"Welcome back to our channel! In this video, we are diving deep"
-            f" into **{topic}**. Agar aap {platform} par kamyabi hasil karna"
-            " chahte hain, toh yeh video aapke liye bohat zaroori hai. Hum"
-            "ne isme tamam tips, tricks, aur secrets share kiye hain jo aapko"
-            " zaroor madad karenge.\n\nTimestamps:\n0:00 - Introduction\n1:30"
-            f" - Understanding {topic}\n3:45 - Pro Tips & Tricks\n6:00 - Final"
-            " Thoughts\n\nDon't forget to Like, Share, and Subscribe for more"
-            " amazing content!"
+            f"Is video mein hum tafseel se baat karenge **{clean_topic}** ke"
+            " baray mein. Agar aap is topic ko mukammal taur par samajhna"
+            " chahte hain, toh yeh video aakhir tak lazmi dekhein. Humne isme"
+            " tamam zaroori points aur secrets share kiye hain.\n\nTimestamps:\n0:00"
+            f" - Introduction\n1:15 - What is {clean_topic}?\n4:30 - Core"
+            " Concepts & Strategy\n8:00 - Conclusion & Final Thoughts\n\nVideo"
+            " pasand aaye toh Like karein aur channel ko subscribe karna na"
+            " bhulein!"
         )
 
         st.subheader("🏷️ Optimized YouTube Tags:")
         st.write(
-            f"{topic}, {topic} tutorial, how to learn {topic}, {platform}"
-            f" growth 2026, viral {topic}, best tips for {topic}, trending"
-            " topics"
+            f"{clean_topic}, how to learn {clean_topic}, {clean_topic} tutorial,"
+            f" viral {clean_topic}, {clean_topic} 2026, trending topics,"
+            f" complete guide {clean_topic}"
         )
 
-      else:
-        st.subheader("📌 Viral TikTok Titles / Hooks:")
+      else:  # TikTok
+        st.subheader("📌 TikTok Viral Titles / Hooks:")
         st.write(
-            f"1. Yeh secret koi nahi batayega about {topic}! 🤫\n2. How I"
-            f" mastered {topic} in just 7 days! 🚀\n3. Stop making this mistake"
-            f" with {topic} ❌"
+            f"1. Yeh secret koi nahi batayega about {clean_topic}! 🤫\n2. How I"
+            f" mastered {clean_topic} in record time! 🚀\n3. Stop making this"
+            f" mistake with {clean_topic} ❌"
         )
 
         st.subheader("📝 TikTok Caption & Description:")
         st.write(
-            f"Aap bhi {topic} ke baray mein yeh nahi jante honge! Watch till"
-            f" the end to see the amazing results. Let me know in the comments"
-            f" what you want to see next on {platform}! 🔥"
+            f"Aapka is baray mein kya khayal hai? {clean_topic} ki mukammal"
+            " tafseel comments mein batayein! Watch till the end for amazing"
+            f" results. 🔥 #{clean_topic.replace(' ', '')}"
         )
 
-        st.subheader("🔥 Trending TikTok Hashtags:")
+        st.subheader("🏷️ TikTok Hashtags:")
         st.write(
-            f"#{platform.lower()} #{topic.replace(' ', '')} #viral"
-            " #trendingvideo #foryoupage #foryou #growthhacks #learnontiktok"
-        )
-        
+            f"#viral #{tag_topic} #trending #foryoupage #foryou #growthhacks"
+            f" #learnontiktok #viral{tag_topic} #trendingvideo"
+          )
+          
