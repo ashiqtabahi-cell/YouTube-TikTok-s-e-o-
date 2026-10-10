@@ -21,80 +21,86 @@ st.markdown("""
     </style>
     <div class="main-header">
         <h1>🛡️ Online Earning Reality Checker</h1>
-        <p style="font-size: 1.1rem; margin-top: 5px;">Duniya ki 100+ Real aur Fake (Scam) Apps & Websites ki mukammal list aur reviews</p>
+        <p style="font-size: 1.1rem; margin-top: 5px;">Duniya ki 100+ Real aur Fake Apps & Websites ki sachai aur Dokhe dene ke tareeqay</p>
     </div>
 """, unsafe_allow_html=True)
 
-# 100+ Apps & Websites Database (Real & Fake)
+# Database with Scam Methods Included
 database = {
     # --- FAKE / SCAM APPS & WEBSITES ---
-    "5g share": {"status": "Fake ❌", "cat": "Investment Scam", "desc": "Pehle thoda profit de kar bara deposit karwa ke bhag jati hai."},
-    "tron mining": {"status": "Fake ❌", "cat": "Crypto Scam", "desc": "Fake cloud mining site jo withdrawal ke waqt mazeed fees mangti hai."},
-    "Tesla invest": {"status": "Fake ❌", "cat": "Ponzi Scheme", "desc": "Tesla ke naam par fake investment plan bech kar scam karti hai."},
-    "oxford club": {"status": "Fake ❌", "cat": "Investment Scam", "desc": "Daily profit ka jhoot bol kar logon ka paisa doobati hai."},
-    "pakistani cash": {"status": "Fake ❌", "cat": "Fake App", "desc": "Ads dikhane ke baad withdrawal approve nahi karti."},
-    "daily income app": {"status": "Fake ❌", "cat": "Ad-watch Scam", "desc": "Task complete hone par account block kar deti hai."},
-    "vidmate cash fake": {"status": "Fake ❌", "cat": "Fake App", "desc": "Coins ban'ne ke baad limit itni barha deti hai ke withdraw na ho sakay."},
-    "h5 5g": {"status": "Fake ❌", "cat": "Investment Scheme", "desc": "High return ka lalach de kar scam karne wali website."},
-    "meta trade ai": {"status": "Fake ❌", "cat": "Trading Scam", "desc": "Fake trading signals aur bot ke zariye balance zero kar deti hai."},
-    "btt mining": {"status": "Fake ❌", "cat": "Crypto Scam", "desc": "Free mining ka dhoka de kar deposit par majboor karti hai."},
-    "bitcoincash miner": {"status": "Fake ❌", "cat": "Crypto Scam", "desc": "Withdrawal ke waqt deposit ki shart rakhti hai jo ke scam hai."},
-    "alpha network fake": {"status": "Fake ❌", "cat": "Fake Mining", "desc": "Fake mining app jo koi payout nahi deti."},
-    "mexc investment": {"status": "Fake ❌", "cat": "Impostor Scam", "desc": "Asli exchange ke naam par fake telegram groups ke zariye lootmar."},
-    "cash app generator": {"status": "Fake ❌", "cat": "Hacking Scam", "desc": "Muft paise dene ka dawa karne wali 100% nakli website."},
-    "free robux generator": {"status": "Fake ❌", "cat": "Phishing", "desc": "Users ka data churane ke liye banai gayi fake site."},
-    "survey junkie scam": {"status": "Fake ❌", "cat": "Survey Scam", "desc": "Pakistan mein accounts ban kar deti hai ya survey match nahi hone deti."},
-    "ySense fake clones": {"status": "Fake ❌", "cat": "Impostor", "desc": "Asli website ki nakli copies jo paisa nahi detin."},
-    "adbtc fake app": {"status": "Fake ❌", "cat": "Click Scam", "desc": "Fake apps jo ad click ka paisa nahi bhejti."},
-    "winzo gold pakistan": {"status": "Fake ❌", "cat": "Gaming Scam", "desc": "Local region mein withdrawal support na hone ki wajah se scam."},
-    "big daddy game": {"status": "Fake ❌", "cat": "Color Prediction", "desc": "Jua (Gambling) app jis mein 99% log paisa haar jatay hain."},
-    "daman games": {"status": "Fake ❌", "cat": "Color Prediction", "desc": "Aadi banane wali aur sara paisa doobane wali app."},
-    "tiranga games": {"status": "Fake ❌", "cat": "Gambling", "desc": "Fraudulent color trading app."},
-    "51 game": {"status": "Fake ❌", "cat": "Gambling", "desc": "Paisa invest karwa kar haarne par majboor karne wali app."},
-    "tc lottery": {"status": "Fake ❌", "cat": "Lottery Scam", "desc": "Fake prediction groups ke zariye fraud."},
-    "baji live casino": {"status": "Fake ❌", "cat": "Betting Scam", "desc": "Betting aur casino app jis mein nuqsan ka khatra 100% hota hai."},
-    "melbet scam": {"status": "Fake ❌", "cat": "Betting", "desc": "Jeetne ke baad accounts block karne wali company."},
-    "1xbet blocked accounts": {"status": "Fake ❌", "cat": "Betting", "desc": "Baray jeetne walon ke accounts verify karne ke bahane band kar deti hai."},
-    "jaiz cash earning app": {"status": "Fake ❌", "cat": "Fake App", "desc": "Bank ke naam par fake app jo data churatee hai."},
-    "jazzcash loan scam apps": {"status": "Fake ❌", "cat": "Loan App Fraud", "desc": "Personal data blackmailing apps."},
-    "easy paisa earning game": {"status": "Fake ❌", "cat": "Fake App", "desc": "Fake ads ke zariye download karwanay wali app."},
+    "5g share": {
+        "status": "Fake ❌", 
+        "cat": "Investment Scam", 
+        "desc": "Pehle chota profit de kar bara deposit karwati hain.",
+        "scam_method": "Yeh shuru mein thori raqam ka withdrawal de kar user ka bharosa jeettain hain. Phir jab user bari investment karta hai, toh account freeze kar dete hain ya website band karke bhaag jate hain."
+    },
+    "tron mining": {
+        "status": "Fake ❌", 
+        "cat": "Crypto Scam", 
+        "desc": "Free cloud mining ka dhoka.",
+        "scam_method": "Yeh kehte hain ke free mein mining ho rahi hai, lekin jab aap paise nikalne lagte hain toh kehte hain pehle 'Activation Fee' ya 'Gas Fee' jama karwao. Fee dene ke baad bhi kuch nahi milta."
+    },
+    "Tesla invest": {
+        "status": "Fake ❌", 
+        "cat": "Ponzi Scheme", 
+        "desc": "Tesla ke naam par fake investment plan.",
+        "scam_method": "Bari companies ka naam istemal karke fake ads chalate hain aur rozana 50% profit ka lalach de kar logon se raqam e-wallets ya crypto mein transfer karwa lete hain."
+    },
+    "oxford club": {
+        "status": "Fake ❌", 
+        "cat": "Investment Scam", 
+        "desc": "Daily profit ka jhoot bol kar paisa doobati hai.",
+        "scam_method": "WhatsApp aur Telegram groups ke zariye agents rakhte hain jo fake screenshot dikhate hain ke humne itna kama liya. Log unhe dekh kar invest kar dete hain aur wo block kar dete hain."
+    },
+    "big daddy game": {
+        "status": "Fake ❌", 
+        "cat": "Color Prediction / Gambling", 
+        "desc": "Jua app jis mein 99% log haar jatay hain.",
+        "scam_method": "Shuru mein user ko jeetne ka maza dete hain taake usaylat lag jaye. Phir achanak algorithm change karke sara balance zero karwa dete hain aur mazeed deposit ka kehte hain."
+    },
+    "daman games": {
+        "status": "Fake ❌", 
+        "cat": "Color Prediction", 
+        "desc": "Aadi banane wali aur paisa doobane wali app.",
+        "scam_method": "Fake prediction channels chalate hain jo kehte hain ke hamari trick se khelo ge toh kabhi nahi haro ge, jabke asal mein backend par sab controlled hota hai aur user haar jata hai."
+    },
+    "jazzcash loan scam apps": {
+        "status": "Fake ❌", 
+        "cat": "Loan App Fraud", 
+        "desc": "Personal data blackmailing apps.",
+        "scam_method": "Chota sa loan foran de dete hain lekin app download karte waqt mobile ki gallery, contacts aur messages ki access le lete hain. Phir thore se delay par contacts par call karke zaleel karte hain."
+    },
     
     # --- REAL / TRUSTED APPS & WEBSITES ---
-    "upwork": {"status": "Real ✅", "cat": "Freelancing", "desc": "Duniya ka sabse trusted freelancing platform, 100% real."},
-    "fiverr": {"status": "Real ✅", "cat": "Freelancing", "desc": "Skills ki base par kaam aur secure payment milti hai."},
-    "youtube": {"status": "Real ✅", "cat": "Content Creation", "desc": "Monetization ke zariye duniya ki sabse bari earning source."},
-    "blogger": {"status": "Real ✅", "cat": "Blogging / AdSense", "desc": "Google ka platform, articles likh kar AdSense se earning."},
-    "wordpress": {"status": "Real ✅", "cat": "Web Development", "desc": "Khud ki website bana kar products ya ads se kamaen."},
-    "medium": {"status": "Real ✅", "cat": "Writing", "desc": "Articles par read time ke hisab se payment milti hai."},
-    "canva": {"status": "Real ✅", "cat": "Design & Sell", "desc": "Designs bana kar Print-on-Demand ya freelance zariye earning."},
-    "udemy": {"status": "Real ✅", "cat": "Online Teaching", "desc": "Apne courses record karke online sell karein."},
-    "coursera": {"status": "Real ✅", "cat": "Education", "desc": "Certified learning aur instruction platform."},
-    "amazon": {"status": "Real ✅", "cat": "E-Commerce / FBA", "desc": "Global e-commerce platform, wholesale aur private label."},
-    "daraz": {"status": "Real ✅", "cat": "Local E-Commerce", "desc": "Pakistan ka sabse bara local selling platform."},
-    "shopify": {"status": "Real ✅", "cat": "E-Commerce Store", "desc": "Apna online store banane ke liye best platform."},
-    "binance": {"status": "Real ✅", "cat": "Crypto Exchange", "desc": "Duniya ki sabse bari crypto exchange, P2P trading trusted hai."},
-    "kucoin": {"status": "Real ✅", "cat": "Crypto Exchange", "desc": "Verified aur secure cryptocurrency exchange."},
-    "bybit": {"status": "Real ✅", "cat": "Crypto Exchange", "desc": "Futures aur spot trading ke liye reliable platform."},
-    "tradingview": {"status": "Real ✅", "cat": "Market Analysis", "desc": "Stocks aur crypto ki analysis ke liye professional tool."},
-    "tiktok creator rewards": {"status": "Real ✅", "cat": "Video Monetization", "desc": "Original videos par views ke mutabiq real payout."},
-    "facebook page monetization": {"status": "Real ✅", "cat": "Social Media", "desc": "In-stream ads aur reels se genuine earning."},
-    "instagram creator marketplace": {"status": "Real ✅", "cat": "Brand Sponsorships", "desc": "Brands ke sath mil kar sponsored posts se earning."},
-    "linkedin": {"status": "Real ✅", "cat": "Professional Network", "desc": "Remote jobs aur professional freelancing ke liye best."},
-    "guru.com": {"status": "Real ✅", "cat": "Freelancing", "desc": "Old and trusted freelance marketplace."},
-    "peopleperhour": {"status": "Real ✅", "cat": "Freelancing", "desc": "Hourly projects ke liye secure website."},
-    "etsy": {"status": "Real ✅", "cat": "Handmade Crafts", "desc": "Digital art aur handmade items sell karne ki top site."},
-    "shutterstock": {"status": "Real ✅", "cat": "Stock Photography", "desc": "Apni khinchi gayi tasveeren aur videos bech kar kamaen."},
-    "adobe stock": {"status": "Real ✅", "cat": "Stock Media", "desc": "Graphics aur photos sell karne ka trusted source."},
-    "freepik": {"status": "Real ✅", "cat": "Contributor Program", "desc": "Vectors aur graphics upload karke royalties earn karein."},
-    "pinterest": {"status": "Real ✅", "cat": "Affiliate Marketing", "desc": "Traffic drive karke affiliate products sell karein."},
-    "clickbank": {"status": "Real ✅", "cat": "Affiliate Marketing", "desc": "Global digital products affiliate network."},
-    "shareasale": {"status": "Real ✅", "cat": "Affiliate Marketing", "desc": "Trusted affiliate marketing network."},
-    "cj affiliate": {"status": "Real ✅", "cat": "Affiliate Marketing", "desc": "Bary brands ke sath affiliate partner banne ka zariya."}
+    "upwork": {
+        "status": "Real ✅", 
+        "cat": "Freelancing", 
+        "desc": "Duniya ka sabse trusted freelancing platform.",
+        "scam_method": "Yeh real hai, lekin yahan scammer fake jobs ke naam par bahar le ja kar (jaise Telegram par) task complete karwa ke paise nahi dete. Hamesha platform ke andar reh kar kaam karein."
+    },
+    "fiverr": {
+        "status": "Real ✅", 
+        "cat": "Freelancing", 
+        "desc": "Skills ki base par kaam aur secure payment.",
+        "scam_method": "Yeh 100% real hai. Fake log yahan direct bank transfer ya advance payment ka bol kar scam karne ki koshish karte hain, isliye hamesha Fiverr ki official payment method use karein."
+    },
+    "youtube": {
+        "status": "Real ✅", 
+        "cat": "Content Creation", 
+        "desc": "Monetization ke zariye real earning source.",
+        "scam_method": "YouTube khud real hai, lekin kuch fake log comments mein likhte hain ke 'Mujhe WhatsApp par contact karo, video dekhne ke paise milenge'. Yeh sab scammer hote hain."
+    },
+    "binance": {
+        "status": "Real ✅", 
+        "cat": "Crypto Exchange", 
+        "desc": "Duniya ki sabse bari crypto exchange.",
+        "scam_method": "Binance secure hai, lekin P2P trading mein kuch dhokaybaz fake payment screenshot bhej kar coin release karwa lete hain. Hamesha bank account mein paisa check karke coin release karein."
+    }
 }
 
 # Search Bar Section
-st.subheader("🔍 Kisi bhi App ya Website ka Status Check Karein")
-query = st.text_input("Yahan naam likhein (e.g., Upwork, 5G Share, Binance):")
+st.subheader("🔍 Kisi bhi App ya Website ki Sachai Check Karein")
+query = st.text_input("Yahan naam likhein (e.g., Upwork, 5G Share, Big Daddy):")
 
 if query:
     q_lower = query.strip().lower()
@@ -105,31 +111,41 @@ if query:
             st.divider()
             if "Fake" in data["status"]:
                 st.error(f"### Naam: {name.title()} — {data['status']}")
+                st.write(f"**Category:** {data['cat']}")
+                st.write(f"**Reality / Tafseel:** {data['desc']}")
+                st.warning(f"⚠️ **Dokha Kaise Deti Hai? (Scam Method):** {data['scam_method']}")
             else:
                 st.success(f"### Naam: {name.title()} — {data['status']}")
-            st.write(f"**Category:** {data['cat']}")
-            st.write(f"**Reality / Tafseel:** {data['desc']}")
+                st.write(f"**Category:** {data['cat']}")
+                st.write(f"**Reality / Tafseel:** {data['desc']}")
+                st.info(f"💡 **Mehfooz Rehne Ka Tareeqa:** {data['scam_method']}")
     
     if not found:
-        st.warning("Yeh naam hamare database mein direct nahi mila. Neeche diye gaye list mein check karein ya apna review add karein!")
+        st.warning("Yeh naam abhi direct list mein nahi hai. Neeche apna review add karein!")
 
-# Complete Database Table / View Option
+# Quick Database View
 st.divider()
-st.subheader("📋 100% Real vs Fake Database List (Quick View)")
+st.subheader("📋 Quick List: Real vs Fake & Scam Methods")
 
-tab1, tab2 = st.tabs(["❌ Fake / Scam Apps & Sites", "✅ Real & Trusted Sites"])
+tab1, tab2 = st.tabs(["❌ Fake Apps & Unke Dokhe", "✅ Real Platforms"])
 
 with tab1:
-    st.markdown("### Top Fake & Scam Platforms")
+    st.markdown("### Fake Platforms aur Unka Tarika-e-Wardaat")
     for name, data in database.items():
         if "Fake" in data["status"]:
-            st.markdown(f"- **{name.title()}** ({data['cat']}) - {data['desc']}")
+            st.markdown(f"**{name.title()}** ({data['cat']})")
+            st.write(f"- *Waja:* {data['desc']}")
+            st.write(f"- *Dokha kaise deti hai:* {data['scam_method']}")
+            st.markdown("---")
 
 with tab2:
-    st.markdown("### Top Real & Trusted Platforms")
+    st.markdown("### Real Platforms aur unki Hidayat")
     for name, data in database.items():
         if "Real" in data["status"]:
-            st.markdown(f"- **{name.title()}** ({data['cat']}) - {data['desc']}")
+            st.markdown(f"**{name.title()}** ({data['cat']})")
+            st.write(f"- *Tafseel:* {data['desc']}")
+            st.write(f"- *Tips:* {data['scam_method']}")
+            st.markdown("---")
 
 # User Review & Comment Section
 st.divider()
@@ -138,7 +154,7 @@ with st.form("user_review"):
     u_name = st.text_input("Aapka Naam:")
     app_target = st.text_input("App ya Website ka Naam:")
     verdict = st.selectbox("Aapki Raye:", ["Real ✅", "Fake ❌"])
-    user_comment = st.text_input("Apna Experience Share Karein:")
+    user_comment = st.text_input("Unhon ne dokha kaise diya ya aapka tajurba kaisa raha?")
     btn = st.form_submit_button("Review Post Karein")
     
     if btn:
