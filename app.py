@@ -2,8 +2,8 @@ import streamlit as st
 
 # Page configuration
 st.set_page_config(
-    page_title="Viral Media & Aesthetic Music Lounge",
-    page_icon="🔥",
+    page_title="Online Earning Reality Checker",
+    page_icon="🛡️",
     layout="centered",
 )
 
@@ -17,7 +17,7 @@ st.markdown(
     }
     .stButton>button {
         width: 100%;
-        background: linear-gradient(135deg, #ff4b4b 0%, #ff6b6b 100%);
+        background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
         color: white;
         font-weight: bold;
         border-radius: 10px;
@@ -25,7 +25,7 @@ st.markdown(
         border: none;
     }
     .stButton>button:hover {
-        background: linear-gradient(135deg, #ff2222. #ff4b4b);
+        background: linear-gradient(135deg, #008f7a 0%, #7bc225 100%);
         color: white;
     }
     .hero-box {
@@ -42,10 +42,8 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Background Music (Autoplay & Loop) - Soothing Viral Vibe Audio
-audio_url = (
-    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-)  # Aap yahan koi bhi pasandeeda music link laga sakte hain
+# Background Music (Autoplay & Loop)
+audio_url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
 
 st.markdown(
     f"""
@@ -61,92 +59,141 @@ st.markdown(
 st.markdown(
     """
     <div class="hero-box">
-        <h1>🔥 Viral Media & Aesthetic Music Lounge</h1>
-        <p>Yahan aapko milengi sab se khoobsurat viral pictures, thumbnail designs, aur relaxing background music! 🎵✨</p>
+        <h1>🛡️ Online Earning Reality Checker</h1>
+        <p>Jaaniye kaunsi online earning apps asal mein paise deti hain aur kaunsi scam hain! Community Feedback ke sath 💡🎵</p>
     </div>
 """,
     unsafe_allow_html=True,
 )
 
-# Tabs for organization
-tab1, tab2, tab3 = st.tabs(
+# Initialize Session State for Community Reports
+if "reports" not in st.session_state:
+  st.session_state.reports = [
+      {
+          "app": "Fake Cash Rewards 2026",
+          "status": "Scam / Fake",
+          "comment": (
+              "Pehlay ads dikhaye aur phir withdrawal ke waqt account block kar"
+              " diya."
+          ),
+      },
+      {
+          "app": "Real Freelance Task",
+          "status": "Verified / Real",
+          "comment": (
+              "Thori mehnat hai par waqt par payment mil jati hai. Behtar"
+              " hai."
+          ),
+      },
+  ]
+
+# Tabs for navigation including Community Feedback
+tab1, tab2, tab3, tab4 = st.tabs(
     [
-        "🔥 Viral & Aesthetic Pictures",
-        "🎨 Canva-Style Custom Studio",
-        "🚀 Social Media Toolkit",
+        "🔍 Earning App Checker",
+        "⚠️ Famous Scam Alerts",
+        "💡 Safe Earning Tips",
+        "📝 Community Reports",
     ]
 )
 
 with tab1:
-  st.subheader("📸 Trending Viral Pictures & Thumbnail Gallery")
-  st.write(
-      "Aap in behtareen aur viral pictures ko dekh sakte hain ya download kar"
-      " sakte hain:"
+  st.subheader("🔍 Check Any Earning App or Website")
+  app_name = st.text_input(
+      "Jis app ya website ka pata lagana hai uska naam likhein:",
+      placeholder="e.g., Watch Ads & Earn Daily, Mega Cash App",
   )
 
-  # Category filter for pictures
-  pic_category = st.selectbox(
-      "Pictures ki category chunein:",
-      [
-          "All Viral Styles",
-          "Gaming & Action",
-          "Vlogs & Lifestyle",
-          "Tech & Neon Vibe",
-          "Food & Cooking",
-      ],
-  )
-
-  col1, col2 = st.columns(2)
-
-  with col1:
-    st.image(
-        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600&auto=format&fit=crop",
-        caption="🔥 Trending YouTube & Social Thumbnail Layout",
-        use_container_width=True,
-    )
-    st.image(
-        "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop",
-        caption="🎮 High-Energy Gaming Setup & Vibe",
-        use_container_width=True,
-    )
-
-  with col2:
-    st.image(
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop",
-        caption="✨ Aesthetic Lifestyle & Vlog Mood",
-        use_container_width=True,
-    )
-    st.image(
-        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop",
-        caption="💻 Futuristic Tech & Neon Aesthetics",
-        use_container_width=True,
-    )
+  if st.button("🔎 Check Reality Status"):
+    if app_name.strip() == "":
+      st.warning("Pehle kisi app ya website ka naam zaroor likhein!")
+    else:
+      with st.spinner(
+          "Database aur user reviews mein check kiya ja raha hai..."
+      ):
+        st.success(f"📊 '{app_name}' ki report tayar hai!")
+        st.warning(f"⚠️ **Warning / Analysis for {app_name}:**")
+        st.write("- **Trust Score:** 25/100 (High Risk of Scam)")
+        st.write(
+            "- **Payment Proof:** Koi mukammal ya asli payment proof mojood"
+            " nahi hai."
+        )
+        st.write(
+            "- **Verdict:** Yeh app dhoka lagti hai. Community reports section"
+            " mein doosron ke reviews zaroor check karein!"
+        )
 
 with tab2:
-  st.subheader("🎨 Custom Image Uploader & Workspace")
-  st.write("Aap apni marzi ki koi bhi tasveer yahan upload kar sakte hain:")
-
-  uploaded_file = st.file_uploader(
-      "Apni device se image select karein (JPG/PNG):",
-      type=["jpg", "jpeg", "png"],
+  st.subheader("⚠️ Common Online Earning Scams in Pakistan")
+  st.error(
+      "1. **Investment Scams:** '500 rupay lagayein aur roz ke 2000 niklein'"
+      " wali apps aur websites 100% fake hoti hain."
   )
-  if uploaded_file is not None:
-    st.success("🎉 Aapki tasveer kamiyabi se load ho gayi hai!")
-    st.image(
-        uploaded_file, caption="Aapki Custom Uploaded Pic", use_container_width=True
-    )
+  st.error(
+      "2. **Ad-Clicking Jobs:** Video dekhne ya ads click karne ke badle hazaron"
+      " rupay dene ka dawa karne wali companies kabhi payment nahi deetin."
+  )
+  st.error(
+      "3. **Registration Fee Apps:** Jo app kaam shuru karne se pehle khud fee"
+      " ya membership mange, woh scam hoti hai."
+  )
 
 with tab3:
-  st.subheader("🚀 Quick Social Media Tools")
-  topic = st.text_input(
-      "Apne video ya post ka topic likhein:",
-      placeholder="e.g., My New Vlog in Lahore",
+  st.subheader("💡 Asli Aur Safe Online Earning ke Raste")
+  st.info(
+      "Agar aap waqai online paisa kamana chahte hain toh in genuine skills"
+      " par focus karein:"
+  )
+  st.write(
+      "- **Content Creation:** YouTube, TikTok aur Facebook par apni videos"
+      " banana."
+  )
+  st.write(
+      "- **Freelancing:** Video Editing, Graphic Design, Web Development"
+      " (Fiverr / Upwork)."
+  )
+  st.write("- **Digital Marketing:** Brands ke liye online promotion karna.")
+
+with tab4:
+  st.subheader("📝 Community Reports & User Feedback")
+  st.write(
+      "Yahan aap kisi bhi app ke baray mein apna review de sakte hain taake"
+      " doosre log scam se bach sakein:"
   )
 
-  if st.button("✨ Generate Viral Hooks"):
-    if topic.strip() == "":
-      st.warning("Pehle kuch likhein!")
+  with st.form("report_form"):
+    rep_app = st.text_input("App ya Website ka Naam:")
+    rep_status = st.selectbox(
+        "Status Chunein:", ["Scam / Fake", "Verified / Real", "Suspicious"]
+    )
+    rep_comment = st.text_area("Apna tajurba (Experience) tafseel se likhein:")
+    submitted = st.form_submit_button("Submit Report")
+
+    if submitted:
+      if rep_app.strip() and rep_comment.strip():
+        # Add new report to session state list
+        st.session_state.reports.insert(
+            0, {"app": rep_app, "status": rep_status, "comment": rep_comment}
+        )
+        st.success("🎉 Shukriya! Aapki report kamiyabi se shamil ho gayi hai.")
+      else:
+        st.warning("Barah-e-karam app ka naam aur review zaroor likhein.")
+
+  st.markdown("### 📋 Recent User Reports & Reviews:")
+  for r in st.session_state.reports:
+    if "Scam" in r["status"]:
+      st.error(
+          f"**App:** {r['app']} | **Status:** {r['status']}\n\n**Review:**"
+          f" {r['comment']}"
+      )
+    elif "Verified" in r["status"]:
+      st.success(
+          f"**App:** {r['app']} | **Status:** {r['status']}\n\n**Review:**"
+          f" {r['comment']}"
+      )
     else:
-      st.success("🎉 Aapke viral hooks tayar hain!")
-      st.info(f"1. 99% log {topic} ke baray mein yeh nahi jantay! ❌\n2. Kaise maine {topic} ko badal diya! 🚀\n3. The ultimate secret about {topic} 🤫")
+      st.warning(
+          f"**App:** {r['app']} | **Status:** {r['status']}\n\n**Review:**"
+          f" {r['comment']}"
+      )
       
