@@ -15,9 +15,9 @@ components.html(ga_code, height=0)
 
 # --- App UI ---
 st.markdown("## 🔍 Ultimate Real vs Fake Earning & Apps Checker")
-st.write("Duniya aur internet ke tamam mashhoor Real aur Fake platforms ki mukammal database.")
+st.write("TikTok, Facebook, YouTube aur tamam mashhoor Real aur Fake platforms ki mukammal database.")
 
-query = st.text_input("🔍 Kisi bhi App ya Website ka naam likhein (e.g., Facebook, 5G Share, Upwork):")
+query = st.text_input("🔍 Kisi bhi App ya Website ka naam likhein (e.g., TikTok, 5G Share, Upwork):")
 
 st.markdown("---")
 
@@ -35,7 +35,8 @@ fake_database = {
 
 # --- Comprehensive Database of Real Platforms ---
 real_database = {
-    "facebook": {"users": "3 Billion+ Users", "rating": "4.5 ⭐", "method": "Meta ka official social media network hai. Yeh earning nahi deta balki business promotion aur marketing ke liye 100% real hai."},
+    "tiktok": {"users": "1 Billion+ Users", "rating": "4.4 ⭐", "method": "Short video entertainment platform. Creators ko Creator Rewards Program, live gifts aur brand sponsorships ke zariye real earning milti hai."},
+    "facebook": {"users": "3 Billion+ Users", "rating": "4.5 ⭐", "method": "Meta ka official social media network hai. Pages aur Reels monetization ke zariye earning hoti hai."},
     "instagram": {"users": "2 Billion+ Users", "rating": "4.6 ⭐", "method": "Visual social media platform. Influencers sponsorships aur brand deals ke zariye earn karte hain."},
     "whatsapp": {"users": "2.5 Billion+ Users", "rating": "4.7 ⭐", "method": "Secure messaging app, communication ke liye 100% trusted hai."},
     "youtube": {"users": "2.5 Billion+ Users", "rating": "4.9 ⭐", "method": "Videos banayein, monetization on karein aur Google AdSense ke zariye direct bank account mein payout lein."},
@@ -43,7 +44,7 @@ real_database = {
     "fiverr": {"users": "4M+ Users", "rating": "4.7 ⭐", "method": "Gigs banayein, international clients ka kaam karein aur direct bank/Payoneer mein paise receive karein."},
     "google": {"users": "Billions of Users", "rating": "4.9 ⭐", "method": "Duniya ka sabse bara search engine aur tech giant jo 100% trusted hai."},
     "daraz": {"users": "50M+ Downloads", "rating": "4.3 ⭐", "method": "E-commerce marketplace (Pakistan/South Asia), online shopping aur selling ke liye real platform hai."},
-    "amazon": {"users": "Billions of Users", "rating": "4.8 ⭐", "method": "Global e-commerce aur FBA/KDP ke zariye e-arning ka sabse bara zariya."},
+    "amazon": {"users": "Billions of Users", "rating": "4.8 ⭐", "method": "Global e-commerce aur FBA/KDP ke zariye earning ka sabse bara zariya."},
     "netflix": {"users": "260M+ Users", "rating": "4.5 ⭐", "method": "Legal streaming platform (Paid subscription, no fake earning promises)."}
 }
 
@@ -75,8 +76,7 @@ if query:
                 
     # Fallback Smart Check for unlisted names
     if not found:
-        # General safety check keywords
         if any(w in q_clean for w in ["invest", "fee", "deposit", "prediction", "task", "bonus", "shart"]):
-            st.error(f"⚠️ **{query}** ke baray mein ahtiyat karein! Aisi apps jo pehle investment ya fee mangti hain, woh **100% Scam** hoti hain.")
+            st.error(f"⚠️ **{query}** ke baray mein ahtiyat karein! Aisi apps jo pehle investment ya fee mangty hain, woh **100% Scam** hoti hain.")
         else:
             st.info(f"🔍 **{query}** hamari direct list mein nahi hai, lekin agar yeh app kaam karne ke badlay pehle **Investment, Deposit ya Advance Tax** maange toh yeh 100% Fake hai. Agar yeh aam social media ya utility app hai toh safe ho sakti hai.")
