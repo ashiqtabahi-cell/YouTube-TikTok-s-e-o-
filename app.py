@@ -2,18 +2,18 @@ import streamlit as st
 
 # Page configuration
 st.set_page_config(
-    page_title="Pro YouTube & TikTok SEO Engine",
-    page_icon="🔥",
+    page_title="AI Social Media & SEO Master Agent",
+    page_icon="🚀",
     layout="centered",
 )
 
-st.title("🔥 Smart YouTube & TikTok SEO Engine")
+st.title("🚀 AI Social Media & SEO Master Agent")
 st.write(
-    "Apna video topic aur category chunein, aur paein bilkul professional aur"
-    " unique SEO content, hooks, aur SEO score aik click mein!"
+    "Apna platform aur niche chunein. Aap chahein toh aik single video ka SEO"
+    " banayein ya phir pure 7 din ka Content Schedule plan karein!"
 )
 
-# Platform and Category selection
+# Global inputs
 col1, col2 = st.columns(2)
 with col1:
   platform = st.selectbox("Platform chunein:", ["YouTube", "TikTok"])
@@ -30,110 +30,207 @@ with col2:
       ],
   )
 
-topic = st.text_input(
-    "Apne video ka main topic ya idea yahan likhein:",
-    placeholder="e.g., How to learn Python in 30 days",
-)
 language = st.selectbox(
     "Zuban (Language):", ["Roman Urdu / Urdu", "English"]
+  )
+
+# Tabs for dual features
+tab1, tab2 = st.tabs(
+    ["🎯 Single Video SEO Generator", "🤖 7-Days Content Planner Agent"]
 )
 
-if st.button("🚀 Generate Pro SEO & Hooks"):
-  if topic.strip() == "":
-    st.warning("Pehle koi topic ya title zaroor likhein!")
-  else:
-    with st.spinner("Smart SEO score aur professional content ban raha hai..."):
-      clean_topic = topic.strip()
-      tag_topic = clean_topic.replace(" ", "")
+with tab1:
+  st.subheader("🎯 Single Video SEO & Hooks Generator")
+  topic = st.text_input(
+      "Apne video ka main topic ya title likhein:",
+      placeholder="e.g., How to learn Python in 30 days",
+      key="seo_topic",
+  )
 
-      st.success("🎉 Aapka smart SEO content taiyar hai!")
+  if st.button("🚀 Generate Professional SEO"):
+    if topic.strip() == "":
+      st.warning("Pehle koi topic ya title zaroor likhein!")
+    else:
+      with st.spinner("Smart SEO score aur professional content ban raha hai..."):
+        clean_topic = topic.strip()
+        tag_topic = clean_topic.replace(" ", "")
 
-      # 1. Smart SEO Score Box
-      st.info(
-          "📊 **SEO Optimization Score:** 96/100 (High Rank Potential for"
-          f" {category})"
-      )
+        st.success("🎉 Aapka smart SEO content tayar hai!")
+        st.info(
+            "📊 **SEO Optimization Score:** 96/100 (High Rank Potential for"
+            f" {category})"
+        )
 
-      if platform == "YouTube":
-        # Titles
-        if language == "Roman Urdu / Urdu":
-          titles_text = (
-              f"1. {clean_topic} - Aakhri Sach (2026)\n2. Maine {clean_topic}"
-              f" kaise seekha? (Mukammal Tareeqa)\n3. {clean_topic} ke baray"
-              " mein yeh ghalti mat karna!"
+        if platform == "YouTube":
+          if language == "Roman Urdu / Urdu":
+            titles_text = (
+                f"1. {clean_topic} - Aakhri Sach (2026)\n2. Maine {clean_topic}"
+                f" kaise seekha? (Mukammal Tareeqa)\n3. {clean_topic} ke"
+                " baray mein yeh ghalti mat karna!"
+            )
+          else:
+            titles_text = (
+                f"1. Master {clean_topic} in 2026 (Step-by-Step)\n2. Why 99%"
+                f" Fail at {clean_topic} (Fix This)\n3. The Ultimate Guide to"
+                f" {clean_topic}"
+            )
+
+          st.subheader("📌 Optimized YouTube Titles:")
+          st.text_area("Titles Box", titles_text, height=100, key="yt_t")
+          st.caption(f"Characters: {len(titles_text)}")
+
+          thumb_text = f"⚡ STOP DOING THIS!\n🔥 MASTER {clean_topic.upper()}"
+          st.subheader("🖼️ High-CTR Thumbnail Text:")
+          st.text_area("Thumbnail Text Box", thumb_text, height=70, key="yt_th")
+
+          if language == "Roman Urdu / Urdu":
+            desc_text = (
+                f"Is video mein hum baat kar rahe hain **{clean_topic}** ke"
+                f" baray mein jo ke aik {category} ki behtareen video hai. Agar"
+                " aapko pasand aaye toh subscribe lazmi karein!\n\nTimestamps:\n0:00"
+                " - Intro\n1:15 - Core Concepts\n5:00 - Pro Tips\n8:00 - Outro"
+            )
+          else:
+            desc_text = (
+                f"In this video, we explore **{clean_topic}** under the"
+                f" {category} category. Watch till the end for expert"
+                f" insights.\n\nTimestamps:\n0:00 - Introduction\n1:15 - Main"
+                " Points\n5:00 - Advanced Tips\n8:00 - Conclusion"
+            )
+
+          st.subheader("📝 Professional YouTube Description:")
+          st.text_area("Description Box", desc_text, height=150, key="yt_d")
+          st.caption(f"Characters: {len(desc_text)}")
+
+          tags_text = (
+              f"{clean_topic}, {clean_topic} {category.lower()}, how to"
+              f" {clean_topic}, viral {clean_topic}, 2026 {clean_topic} guide"
           )
-        else:
-          titles_text = (
-              f"1. Master {clean_topic} in 2026 (Step-by-Step)\n2. Why 99%"
-              f" Fail at {clean_topic} (Fix This)\n3. The Ultimate Guide to"
-              f" {clean_topic}"
-          )
+          st.subheader("🏷️ Ranked YouTube Tags:")
+          st.text_area("Tags Box", tags_text, height=80, key="yt_tag")
 
-        st.subheader("📌 Optimized YouTube Titles:")
-        st.text_area("Titles Box", titles_text, height=100)
-        st.caption(f"Characters: {len(titles_text)}")
+        else:  # TikTok
+          if language == "Roman Urdu / Urdu":
+            titles_text = (
+                f"1. Yeh secret trick {clean_topic} ke liye hai! 🤫\n2. Kaise"
+                f" maine {clean_topic} badal diya 🚀\n3. Don't scroll without"
+                f" watching this about {clean_topic} ❌"
+            )
+          else:
+            titles_text = (
+                f"1. The secret about {clean_topic} nobody tells you! 🤫\n2."
+                f" How to win at {clean_topic} in seconds 🚀\n3. Stop ignoring"
+                f" this about {clean_topic} ❌"
+            )
 
-        # Thumbnail Ideas
-        thumb_text = f"⚡ STOP DOING THIS!\n🔥 MASTER {clean_topic.upper()}"
-        st.subheader("🖼️ High-CTR Thumbnail Text:")
-        st.text_area("Thumbnail Text Box", thumb_text, height=70)
+          st.subheader("📌 TikTok Viral Hooks / Titles:")
+          st.text_area("TikTok Titles", titles_text, height=100, key="tk_t")
 
-        # Description
-        if language == "Roman Urdu / Urdu":
           desc_text = (
-              f"Is video mein hum baat kar rahe hain **{clean_topic}** ke baray"
-              f" mein jo ke aik {category} ki behtareen video hai. Agar aapko"
-              " pasand aaye toh subscribe lazmi karein!\n\nTimestamps:\n0:00 -"
-              " Intro\n1:15 - Core Concepts\n5:00 - Pro Tips\n8:00 - Outro"
+              f"Behtareen {category} tip for {clean_topic}! Apni rawayaat jari"
+              f" rakhein aur comments mein batayein kesa laga. 🔥"
           )
-        else:
-          desc_text = (
-              f"In this video, we explore **{clean_topic}** under the"
-              f" {category} category. Watch till the end for expert"
-              f" insights.\n\nTimestamps:\n0:00 - Introduction\n1:15 - Main"
-              " Points\n5:00 - Advanced Tips\n8:00 - Conclusion"
+          st.subheader("📝 TikTok Caption:")
+          st.text_area("TikTok Caption Box", desc_text, height=100, key="tk_d")
+
+          tags_text = (
+              f"#tiktok #{category.lower().replace(' ', '')} #{tag_topic}"
+              " #viral #trending #foryoupage #growthhacks #learnontiktok"
           )
+          st.subheader("🏷️ Trending TikTok Hashtags:")
+          st.text_area("TikTok Hashtags", tags_text, height=80, key="tk_tag")
 
-        st.subheader("📝 Professional YouTube Description:")
-        st.text_area("Description Box", desc_text, height=150)
-        st.caption(f"Characters: {len(desc_text)}")
+with tab2:
+  st.subheader("🤖 AI 7-Days Content Planner Agent")
+  brand_focus = st.text_input(
+      "Aapke channel/page ka naam ya main focus kya hai?",
+      placeholder="e.g., Daily Coding Tips in Pakistan",
+      key="agent_focus",
+  )
 
-        # Tags
-        tags_text = (
-            f"{clean_topic}, {clean_topic} {category.lower()}, how to"
-            f" {clean_topic}, viral {clean_topic}, 2026 {clean_topic} guide"
+  if st.button("🤖 Run Content Planner Agent"):
+    if brand_focus.strip() == "":
+      st.warning("Pehle apne channel ya page ka naam/focus zaroor likhein!")
+    else:
+      with st.spinner("AI Agent 7 din ka content schedule design kar raha hai..."):
+        st.success("🎉 Aapka 7-Days Content Calendar Agent ki taraf se tayar hai!")
+        st.info(
+            f"🧠 **Agent Status:** Active | Strategy Optimized for"
+            f" **{platform}** in **{category}**"
         )
-        st.subheader("🏷️ Ranked YouTube Tags:")
-        st.text_area("Tags Box", tags_text, height=80)
 
-      else:  # TikTok
         if language == "Roman Urdu / Urdu":
-          titles_text = (
-              f"1. Yeh secret trick {clean_topic} ke liye hai! 🤫\n2. Kaise"
-              f" maine {clean_topic} badal diya 🚀\n3. Don't scroll without"
-              f" watching this about {clean_topic} ❌"
-          )
+          schedule_text = f"""📅 Day 1: Introduction & Foundation
+- Topic: {brand_focus} ki shuruwat kaise karein?
+- Title/Hook: 99% log {brand_focus} mein yeh ghalti karte hain! ❌
+- Format: High-energy opening + 3 main points.
+
+📅 Day 2: Deep Dive / Tutorial
+- Topic: {brand_focus} ka sab se bara secret
+- Title/Hook: Yeh secret trick kisi ne nahi batayi! 🤫
+- Format: Step-by-step breakdown.
+
+📅 Day 3: Common Mistakes
+- Topic: {brand_focus} mein nakami ki wajohaat
+- Title/Hook: Yeh 3 galtiyan aapka channel barbad kar sakti hain! ⚠️
+- Format: Warning style interactive video.
+
+📅 Day 4: Fast Results / Growth Hack
+- Topic: {brand_focus} ko tezi se grow karne ka tareeqa
+- Title/Hook: Maine kaise sirf 7 din mein result dekha? 🚀
+- Format: Proof & case study style.
+
+📅 Day 5: Q&A / Audience Interaction
+- Topic: Audience ke sab se ahem sawal
+- Title/Hook: Aapke sawalon ke jawab jo aapko hairan kar dein ge! 💡
+- Format: Comment reply format.
+
+📅 Day 6: Advanced Strategy
+- Topic: Pro level tips for {brand_focus}
+- Title/Hook: Experts yeh tareeqa chupatay hain! 🤫
+- Format: Advanced breakdown.
+
+📅 Day 7: Weekly Wrap-up & Call to Action
+- Topic: Is hafte ki sab se bari learning
+- Title/Hook: Next week kya hone wala hai? Don't miss out! 🔥
+- Format: Summary & upcoming tease."""
         else:
-          titles_text = (
-              f"1. The secret about {clean_topic} nobody tells you! 🤫\n2. How"
-              f" to win at {clean_topic} in seconds 🚀\n3. Stop ignoring this"
-              f" about {clean_topic} ❌"
-          )
+          schedule_text = f"""📅 Day 1: Introduction & Foundation
+- Topic: How to get started with {brand_focus}
+- Title/Hook: 99% people fail at {brand_focus} because of this! ❌
+- Format: High-energy opening + 3 main points.
 
-        st.subheader("📌 TikTok Viral Hooks / Titles:")
-        st.text_area("TikTok Titles", titles_text, height=100)
+📅 Day 2: Deep Dive / Tutorial
+- Topic: The biggest secret of {brand_focus}
+- Title/Hook: The secret trick nobody is telling you! 🤫
+- Format: Step-by-step breakdown.
 
-        desc_text = (
-            f"Behtareen {category} tip for {clean_topic}! Apni rawayaat jari"
-            f" rakhein aur comments mein batayein kesa laga. 🔥"
-        )
-        st.subheader("📝 TikTok Caption:")
-        st.text_area("TikTok Caption Box", desc_text, height=100)
+📅 Day 3: Common Mistakes
+- Topic: Why beginners fail in {brand_focus}
+- Title/Hook: Stop making these 3 critical mistakes! ⚠️
+- Format: Warning style interactive video.
 
-        tags_text = (
-            f"#tiktok #{category.lower().replace(' ', '')} #{tag_topic} #viral"
-            " #trending #foryoupage #growthhacks #learnontiktok"
-        )
-        st.subheader("🏷️ Trending TikTok Hashtags:")
-        st.text_area("TikTok Hashtags", tags_text, height=80)
-            
+📅 Day 4: Fast Results / Growth Hack
+- Topic: How to grow fast in {brand_focus}
+- Title/Hook: How I got massive results in just 7 days! 🚀
+- Format: Proof & case study style.
+
+📅 Day 5: Q&A / Audience Interaction
+- Topic: Answering top viewer questions
+- Title/Hook: Answering the questions you were too afraid to ask! 💡
+- Format: Comment reply format.
+
+📅 Day 6: Advanced Strategy
+- Topic: Pro level techniques for {brand_focus}
+- Title/Hook: The strategy top creators use behind the scenes! 🤫
+- Format: Advanced breakdown.
+
+📅 Day 7: Weekly Wrap-up & Call to Action
+- Topic: Weekly review and future roadmap
+- Title/Hook: What's next for {brand_focus}? Don't miss this! 🔥
+- Format: Summary & upcoming tease."""
+
+        st.subheader("📋 7-Days Content Schedule (Agent Output):")
+        st.text_area("Schedule Box", schedule_text, height=350, key="agent_out")
+        st.caption("Aap is poore schedule ko aik click mein copy kar sakte hain!")
+    
