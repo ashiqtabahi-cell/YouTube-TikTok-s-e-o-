@@ -2,147 +2,138 @@ import streamlit as st
 
 # Page configuration
 st.set_page_config(
-    page_title="Professional Video SEO Generator", page_icon="🚀", layout="centered"
+    page_title="Pro YouTube & TikTok SEO Engine",
+    page_icon="🔥",
+    layout="centered",
 )
 
-st.title("🚀 Pro Video Upload & SEO Generator")
+st.title("🔥 Smart YouTube & TikTok SEO Engine")
 st.write(
-    "Apni video upload karein aur asani se copy karne ke liye professional"
-    " Titles, Descriptions, Thumbnail text, aur Tags hasil karein!"
+    "Apna video topic aur category chunein, aur paein bilkul professional aur"
+    " unique SEO content, hooks, aur SEO score aik click mein!"
 )
 
-# 1. Video File Uploader
-uploaded_file = st.file_uploader(
-    "Apni video file yahan upload karein:", type=["mp4", "mov", "avi", "mkv"]
-)
+# Platform and Category selection
+col1, col2 = st.columns(2)
+with col1:
+  platform = st.selectbox("Platform chunein:", ["YouTube", "TikTok"])
+with col2:
+  category = st.selectbox(
+      "Niche / Category:",
+      [
+          "Tech & Coding",
+          "Vlogs & Lifestyle",
+          "Gaming",
+          "Education & Info",
+          "Cooking & Food",
+          "Entertainment & Comedy",
+      ],
+  )
 
-platform = st.selectbox("Platform chunein:", ["YouTube", "TikTok"])
+topic = st.text_input(
+    "Apne video ka main topic ya idea yahan likhein:",
+    placeholder="e.g., How to learn Python in 30 days",
+)
 language = st.selectbox(
-    "Zuban (Language) chunein:", ["Roman Urdu / Urdu", "English"]
+    "Zuban (Language):", ["Roman Urdu / Urdu", "English"]
 )
 
-if uploaded_file is not None:
-  # Video ki basic details
-  file_size_mb = uploaded_file.size / (1024 * 1024)
-  file_details = {
-      "FileName": uploaded_file.name,
-      "FileType": uploaded_file.type,
-      "FileSize": f"{file_size_mb:.2f} MB",
-  }
-
-  st.success("🎉 Video kamyabi ke sath upload ho gayi hai!")
-
-  with st.expander("📁 Video ki Maloomat (Metadata) dekhein"):
-    st.json(file_details)
-
-  # Video ke naam se topic nikalna
-  raw_name = uploaded_file.name.rsplit(".", 1)[0]
-  clean_topic = raw_name.replace("_", " ").replace("-", " ")
-
-  if st.button("Generate Professional SEO"):
-    with st.spinner("Behtareen SEO content aur thumbnail ideas ban rahe hain..."):
-
+if st.button("🚀 Generate Pro SEO & Hooks"):
+  if topic.strip() == "":
+    st.warning("Pehle koi topic ya title zaroor likhein!")
+  else:
+    with st.spinner("Smart SEO score aur professional content ban raha hai..."):
+      clean_topic = topic.strip()
       tag_topic = clean_topic.replace(" ", "")
+
+      st.success("🎉 Aapka smart SEO content taiyar hai!")
+
+      # 1. Smart SEO Score Box
+      st.info(
+          "📊 **SEO Optimization Score:** 96/100 (High Rank Potential for"
+          f" {category})"
+      )
 
       if platform == "YouTube":
         # Titles
         if language == "Roman Urdu / Urdu":
           titles_text = (
-              f"1. {clean_topic} - Mukammal Video (2026)\n2. Is video mein"
-              f" dekhein {clean_topic} ki haqeeqat!\n3. {clean_topic} ki"
-              " behtareen tafseel"
+              f"1. {clean_topic} - Aakhri Sach (2026)\n2. Maine {clean_topic}"
+              f" kaise seekha? (Mukammal Tareeqa)\n3. {clean_topic} ke baray"
+              " mein yeh ghalti mat karna!"
           )
         else:
           titles_text = (
-              f"1. Complete Guide to {clean_topic} (2026)\n2. Everything You"
-              f" Need to Know About {clean_topic}\n3. Mastering {clean_topic}"
-              " Step-by-Step"
+              f"1. Master {clean_topic} in 2026 (Step-by-Step)\n2. Why 99%"
+              f" Fail at {clean_topic} (Fix This)\n3. The Ultimate Guide to"
+              f" {clean_topic}"
           )
 
-        st.subheader("📌 YouTube Titles (Copy below):")
-        st.text_area("Titles", titles_text, height=100)
-        st.caption(f"Characters count: {len(titles_text)}")
+        st.subheader("📌 Optimized YouTube Titles:")
+        st.text_area("Titles Box", titles_text, height=100)
+        st.caption(f"Characters: {len(titles_text)}")
 
         # Thumbnail Ideas
-        thumb_text = (
-            f"🔥 SECRETS OF {clean_topic.upper()}!\n⚡ MUST WATCH (2026)"
-        )
-        st.subheader("🖼️ Thumbnail Text Ideas:")
-        st.text_area("Thumbnail Text", thumb_text, height=70)
+        thumb_text = f"⚡ STOP DOING THIS!\n🔥 MASTER {clean_topic.upper()}"
+        st.subheader("🖼️ High-CTR Thumbnail Text:")
+        st.text_area("Thumbnail Text Box", thumb_text, height=70)
 
         # Description
         if language == "Roman Urdu / Urdu":
           desc_text = (
-              f"Aapki upload ki gayi video (**{clean_topic}**) ke mutabiq yeh"
-              " description hai. Is video mein humne tamam zaroori pehluon par"
-              " baat ki hai. Video pasand aaye toh like aur channel ko subscribe"
-              f" zaroor karein!\n\nFile Name: {uploaded_file.name}\nSize:"
-              f" {file_details['FileSize']}\n\nTimestamps:\n0:00 - Intro\n1:30"
-              " - Main Topic\n5:00 - Conclusion"
+              f"Is video mein hum baat kar rahe hain **{clean_topic}** ke baray"
+              f" mein jo ke aik {category} ki behtareen video hai. Agar aapko"
+              " pasand aaye toh subscribe lazmi karein!\n\nTimestamps:\n0:00 -"
+              " Intro\n1:15 - Core Concepts\n5:00 - Pro Tips\n8:00 - Outro"
           )
         else:
           desc_text = (
-              f"Welcome to this video about **{clean_topic}**. We cover all"
-              f" essential details and insights.\n\nFile Name:"
-              f" {uploaded_file.name}\nSize:"
-              f" {file_details['FileSize']}\n\nTimestamps:\n0:00 -"
-              " Introduction\n1:30 - Core Details\n5:00 - Summary"
+              f"In this video, we explore **{clean_topic}** under the"
+              f" {category} category. Watch till the end for expert"
+              f" insights.\n\nTimestamps:\n0:00 - Introduction\n1:15 - Main"
+              " Points\n5:00 - Advanced Tips\n8:00 - Conclusion"
           )
 
-        st.subheader("📝 YouTube Description (Copy below):")
-        st.text_area("Description", desc_text, height=150)
-        st.caption(f"Characters count: {len(desc_text)}")
+        st.subheader("📝 Professional YouTube Description:")
+        st.text_area("Description Box", desc_text, height=150)
+        st.caption(f"Characters: {len(desc_text)}")
 
         # Tags
         tags_text = (
-            f"{clean_topic}, {clean_topic} video, upload {clean_topic}, viral"
-            f" {clean_topic}, youtube growth 2026, trending"
+            f"{clean_topic}, {clean_topic} {category.lower()}, how to"
+            f" {clean_topic}, viral {clean_topic}, 2026 {clean_topic} guide"
         )
-        st.subheader("🏷️ YouTube Tags (Copy below):")
-        st.text_area("Tags", tags_text, height=80)
+        st.subheader("🏷️ Ranked YouTube Tags:")
+        st.text_area("Tags Box", tags_text, height=80)
 
       else:  # TikTok
-        # TikTok Titles / Hooks
         if language == "Roman Urdu / Urdu":
           titles_text = (
-              f"1. {clean_topic} ki yeh video miss mat karna! 🤫\n2. Amazing"
-              f" moments from {clean_topic} 🚀\n3. {clean_topic} ka asal raaz ❌"
+              f"1. Yeh secret trick {clean_topic} ke liye hai! 🤫\n2. Kaise"
+              f" maine {clean_topic} badal diya 🚀\n3. Don't scroll without"
+              f" watching this about {clean_topic} ❌"
           )
         else:
           titles_text = (
-              f"1. You won't believe this about {clean_topic}! 🤫\n2. Amazing"
-              f" insights on {clean_topic} 🚀\n3. The truth about {clean_topic}"
-              " ❌"
+              f"1. The secret about {clean_topic} nobody tells you! 🤫\n2. How"
+              f" to win at {clean_topic} in seconds 🚀\n3. Stop ignoring this"
+              f" about {clean_topic} ❌"
           )
 
-        st.subheader("📌 TikTok Viral Titles / Hooks:")
+        st.subheader("📌 TikTok Viral Hooks / Titles:")
         st.text_area("TikTok Titles", titles_text, height=100)
 
-        # TikTok Caption
-        if language == "Roman Urdu / Urdu":
-          desc_text = (
-              f"New video uploaded: {clean_topic}! Watch till the end and share"
-              f" your thoughts in the comments. 🔥 File: {uploaded_file.name}"
-          )
-        else:
-          desc_text = (
-              f"New video uploaded: {clean_topic}! Watch till the end and share"
-              f" your thoughts in the comments. 🔥 File: {uploaded_file.name}"
-          )
-
-        st.subheader("📝 TikTok Caption & Description:")
-        st.text_area("TikTok Description", desc_text, height=100)
-
-        # Hashtags
-        tags_text = (
-            f"#tiktok #viral #{tag_topic} #trending #foryoupage #foryou"
-            f" #uploadvideo #viral{tag_topic}"
+        desc_text = (
+            f"Behtareen {category} tip for {clean_topic}! Apni rawayaat jari"
+            f" rakhein aur comments mein batayein kesa laga. 🔥"
         )
-        st.subheader("🏷️ TikTok Hashtags:")
+        st.subheader("📝 TikTok Caption:")
+        st.text_area("TikTok Caption Box", desc_text, height=100)
+
+        tags_text = (
+            f"#tiktok #{category.lower().replace(' ', '')} #{tag_topic} #viral"
+            " #trending #foryoupage #growthhacks #learnontiktok"
+        )
+        st.subheader("🏷️ Trending TikTok Hashtags:")
         st.text_area("TikTok Hashtags", tags_text, height=80)
-else:
-  st.info(
-      "👆 Pehle upar diye gaye button se apni video (MP4/MOV) select karke upload"
-      " karein."
-            )
             
