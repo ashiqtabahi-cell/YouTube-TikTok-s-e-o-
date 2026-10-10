@@ -57,7 +57,7 @@ st.markdown(
     """
     <div class="hero-box">
         <h1>🚀 AI Social Media & SEO Master Agent</h1>
-        <p>Aapka mukammal AI-powered toolkit! Beautiful UI, Background Music & Visual Templates Enabled 🎵🖼️</p>
+        <p>Aapka mukammal Canva-style Creator Studio! Background Music, SEO Generator & Custom Image Uploader Enabled 🎵🎨</p>
     </div>
 """,
     unsafe_allow_html=True,
@@ -84,12 +84,12 @@ language = st.selectbox(
     "🌐 Zuban (Language):", ["Roman Urdu / Urdu", "English"]
 )
 
-# Tabs for dual features + Visual Gallery
+# Tabs for dual features + Canva-style Gallery & Uploader
 tab1, tab2, tab3 = st.tabs(
     [
         "🎯 Single Video SEO Generator",
         "🤖 7-Days Content Planner Agent",
-        "🖼️ Visual Gallery & Templates",
+        "🎨 Canva-Style Thumbnail Studio",
     ]
 )
 
@@ -289,23 +289,41 @@ with tab2:
         st.caption("Aap is poore schedule ko aik click mein copy kar sakte hain!")
 
 with tab3:
-  st.subheader("🖼️ Visual Gallery & Thumbnail Templates")
+  st.subheader("🎨 Canva-Style Thumbnail & Image Studio")
   st.write(
-      "Yahan aap apni video ke liye alag-alag categories ke behtareen"
-      " thumbnail styles aur design ideas dekh sakte hain [cite:"
-      " watermarked_img_2894656666853911759.jpg]:"
+      "Yahan aap pre-designed templates dekh sakte hain ya phir apni marzi ki"
+      " tasveer upload kar ke preview kar sakte hain [cite:"
+      " watermarked_img_2894656666853911759.jpg]!"
   )
 
-  # Displaying the curated visual inspiration template
-  st.image(
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
-      caption="Creator Hub - Professional Thumbnail & Visual Inspirations",
-      use_container_width=True,
+  # Option for user to choose template gallery or custom upload
+  studio_mode = st.radio(
+      "Mode chunein:",
+      [
+          "🖼️ Preset Template Gallery (Canva Style)",
+          "📤 Upload Custom Image",
+      ],
   )
 
-  st.markdown("""
-        ### 💡 Professional Thumbnail Tips:
-        * **High Contrast Colors:** Bright colors (Yellow, Red, Neon Green) ka istemal karein taake mobile screen par nazar aaye.
-        * **Clear Bold Text:** Thumbnail par kam se kam alfaaz likhein jo parhne mein asan hon.
-        * **Expressive Faces:** Agar mumkin ho toh video ke topic ke mutabiq emotional expression wali tasveer lagayein.
-    """)
+  if studio_mode == "🖼️ Preset Template Gallery (Canva Style)":
+    st.image(
+        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
+        caption="Creator Studio - Professional Thumbnail Layouts",
+        use_container_width=True,
+    )
+    st.info(
+        "Aap in mein se kisi bhi style ko apne thumbnail design ke liye chun"
+        " sakte hain!"
+    )
+  else:
+    uploaded_file = st.file_uploader(
+        "Apni marzi ki image (JPG/PNG) upload karein:",
+        type=["jpg", "jpeg", "png"],
+    )
+    if uploaded_file is not None:
+      st.success("🎉 Aapki custom image kamiyabi se upload ho gayi hai!")
+      st.image(
+          uploaded_file,
+          caption="Uploaded Custom Thumbnail Preview",
+          use_container_width=True,
+)
