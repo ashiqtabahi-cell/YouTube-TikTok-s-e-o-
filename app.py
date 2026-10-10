@@ -3,82 +3,80 @@ import streamlit.components.v1 as components
 
 # --- Google Analytics Tracking Code ---
 ga_code = """
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MWB5X5SBW9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-MWB5X5SBW9');
 </script>
 """
 components.html(ga_code, height=0)
 
-# --- App UI Configuration ---
-st.set_page_config(page_title="Online Earning Reality Checker", page_icon="🔍", layout="wide")
+# --- App UI ---
+st.markdown("## 🔍 Ultimate Real vs Fake Earning & Apps Checker")
+st.write("Duniya aur internet ke tamam mashhoor Real aur Fake platforms ki mukammal database.")
 
-st.markdown("## 🔍 Online Earning Reality Checker")
-st.write("Google Play Store aur internet par mojood mashhoor real aur fake apps/websites ki mukammal list, reviews aur haqeeqat.")
-
-# Search Bar
-search_query = st.text_input("🔍 Kisi bhi App ya Website ka naam search karein (e.g., Upwork, 5G Share, TikTok):")
+query = st.text_input("🔍 Kisi bhi App ya Website ka naam likhein (e.g., Facebook, 5G Share, Upwork):")
 
 st.markdown("---")
 
-# Tabs for Fake and Real lists
-tab1, tab2 = st.tabs(["❌ Top Fake & Scam Apps (Play Store / Web)", "✔️ Top Real Earning Platforms"])
+# --- Comprehensive Database of Fake Platforms ---
+fake_database = {
+    "5g share": {"downloads": "1M+ Downloads", "rating": "1.2 ⭐", "reason": "Ponzi scheme hai. Shuru mein chota profit de kar bara investment karwati hai aur bhaag jati hai."},
+    "big daddy": {"downloads": "500K+ Downloads", "rating": "1.5 ⭐", "reason": "Color prediction aur gambling app hai. Algorithm shuru mein jeetne deta hai aur aakhir mein sab dooba deta hai."},
+    "91 club": {"downloads": "800K+ Downloads", "rating": "1.4 ⭐", "reason": "Online gambling aur illegal betting app hai jo logon ka paisa loot leti hai."},
+    "taskpay": {"downloads": "200K+ Downloads", "rating": "1.8 ⭐", "reason": "Task karwane ke baad withdrawal ke waqt fee ya tax maangti hai aur payment nahi deti."},
+    "daily watch video": {"downloads": "5M+ Downloads", "rating": "2.0 ⭐", "reason": "Videos dekhne par dollars dene ka jhoota dawa karti hai aur aakhir mein account block kar deti hai."},
+    "h5 5g": {"downloads": "300K+ Downloads", "rating": "1.3 ⭐", "reason": "Fake investment website jo daily profit ka lalach de kar scam karti hai."},
+    "free bitcoin mining": {"downloads": "10M+ Downloads", "rating": "2.2 ⭐", "reason": "Free crypto mining ke naam par deposit ya speed-up fee maangti hai."},
+    "pakistani ad clicking apps": {"downloads": "1M+ Downloads", "rating": "1.9 ⭐", "reason": "Registration fee ya membership fee le kar bhaag jati hain."}
+}
 
-with tab1:
-    st.markdown("### 🚨 Top 50+ Fake & Scam Apps / Websites (Reviews & Scam Reasons)")
-    st.markdown("Yeh woh platforms hain jo logon ko fake promises de kar loot-te hain:")
+# --- Comprehensive Database of Real Platforms ---
+real_database = {
+    "facebook": {"users": "3 Billion+ Users", "rating": "4.5 ⭐", "method": "Meta ka official social media network hai. Yeh earning nahi deta balki business promotion aur marketing ke liye 100% real hai."},
+    "instagram": {"users": "2 Billion+ Users", "rating": "4.6 ⭐", "method": "Visual social media platform. Influencers sponsorships aur brand deals ke zariye earn karte hain."},
+    "whatsapp": {"users": "2.5 Billion+ Users", "rating": "4.7 ⭐", "method": "Secure messaging app, communication ke liye 100% trusted hai."},
+    "youtube": {"users": "2.5 Billion+ Users", "rating": "4.9 ⭐", "method": "Videos banayein, monetization on karein aur Google AdSense ke zariye direct bank account mein payout lein."},
+    "upwork": {"users": "18M+ Users", "rating": "4.8 ⭐", "method": "World-class freelancing platform jahan skills (coding, writing, design) ke badle secure payment milti hai."},
+    "fiverr": {"users": "4M+ Users", "rating": "4.7 ⭐", "method": "Gigs banayein, international clients ka kaam karein aur direct bank/Payoneer mein paise receive karein."},
+    "google": {"users": "Billions of Users", "rating": "4.9 ⭐", "method": "Duniya ka sabse bara search engine aur tech giant jo 100% trusted hai."},
+    "daraz": {"users": "50M+ Downloads", "rating": "4.3 ⭐", "method": "E-commerce marketplace (Pakistan/South Asia), online shopping aur selling ke liye real platform hai."},
+    "amazon": {"users": "Billions of Users", "rating": "4.8 ⭐", "method": "Global e-commerce aur FBA/KDP ke zariye e-arning ka sabse bara zariya."},
+    "netflix": {"users": "260M+ Users", "rating": "4.5 ⭐", "method": "Legal streaming platform (Paid subscription, no fake earning promises)."}
+}
 
-    fake_apps_list = [
-        {"name": "5G Share (Investment Scam)", "downloads": "1M+ Downloads", "review": "1.2 ⭐ (Very Poor)", "reason": "Yeh ek Ponzi scheme hai. Shuru mein thora profit de kar bara investment karwati hai aur phir website band kar deti hai."},
-        {"name": "Big Daddy / 91 Club (Prediction & Gambling)", "downloads": "500K+ Downloads", "review": "1.5 ⭐", "reason": "Color prediction aur gambling apps hain. Inka algorithm pehle jeetne deta hai aur aakhir mein saara balance zero kar deta hai."},
-        {"name": "Daily Watch Video & Earn Cash", "downloads": "5M+ Downloads", "review": "2.0 ⭐", "reason": "Videos dikhane ke $10 dene ka dawa karti hain, lekin withdrawal ke waqt 50$ fee ya tax maang kar block kar deti hain."},
-        {"name": "TaskPay / Micro-Task Scams", "downloads": "100K+ Downloads", "review": "1.8 ⭐", "reason": "Mehnat karwane ke baad jab payout ka waqt aata hai toh account banned ya 'Minimum threshold not reached' ka error de deti hain."},
-        {"name": "Crypto Cloud Mining Free Apps", "downloads": "2M+ Downloads", "review": "2.1 ⭐", "reason": "Free mein cloud mining ka bol kar 'Speed Up' ke naam par deposit maangti hain aur paisa doob jata hai."}
-    ]
-
-    for app in fake_apps_list:
-        with st.expander(f"❌ {app['name']} ({app['downloads']} | {app['review']})"):
-            st.markdown(f"**Scam Ki Waja:** {app['reason']}")
-            st.error("⚠️ Is app ya website par apna paisa ya waqt barbad mat karein!")
-
-with tab2:
-    st.markdown("### ✅ Top 50+ Real Earning Platforms (How They Pay)")
-    st.markdown("Yeh woh authentic platforms hain jo real mehnat ya skills ke badle payment dete hain:")
-
-    real_apps_list = [
-        {"name": "Upwork & Fiverr (Freelancing)", "users": "10M+ Active Users", "review": "4.8 ⭐ (Trusted)", "method": "Aap apni skills (Web Development, Content Writing, Designing) ke zariye clients ka kaam karte hain. Kaam mukammal hone par platform secure payout direct bank account ya Payoneer mein deta hai."},
-        {"name": "YouTube & Google AdSense", "users": "Billions of Users", "review": "4.9 ⭐ (Trusted)", "method": "Aap apne channel par original videos banate hain. Jab log videos dekhte hain aur ads chalte hain, toh Google AdSense har maheenay direct bank account mein earning transfer karta hai."},
-        {"name": "Medium & Substack (Writing)", "users": "5M+ Readers", "review": "4.7 ⭐ (Trusted)", "method": "Articles likhne par readers ki engagement aur membership read time ke hisab se dollars mein payout milta hai."},
-        {"name": "Amazon KDP (Self Publishing)", "users": "Millions of Authors", "review": "4.6 ⭐ (Trusted)", "method": "Apni e-books ya low-content books publish karein. Jab bhi koi book khareedta hai, Amazon apna commission rakh kar baqi royalty aapke account mein bhej deta hai."},
-        {"name": "GitHub / Software SaaS Models", "users": "100M+ Developers", "review": "4.9 ⭐ (Trusted)", "method": "Apni coding skills se software, tools ya plugins bana kar subscription model (SaaS) ya APIs ke zariye worldwide clients se earn karein."}
-    ]
-
-    for app in real_apps_list:
-        with st.expander(f"✔️ {app['name']} ({app['users']} | {app['review']})"):
-            st.markdown(f"**Pise Kaise Detay Hain?:** {app['method']}")
-            st.success("✔️ Yeh 100% real aur verified platforms hain.")
-
-# Search Results Handling
-if search_query:
-    st.markdown("---")
-    st.markdown(f"### 🔍 '{search_query}' ke liye Search Result:")
-    query_lower = search_query.lower()
-    
+# --- Search & Detection Logic ---
+if query:
+    q_clean = query.lower().strip()
     found = False
-    for app in fake_apps_list:
-        if query_lower in app['name'].lower():
-            st.error(f"⚠️ **{app['name']}** aik **Fake/Scam** platform hai! \n- **Waja:** {app['reason']}")
+    
+    # Check in Fake Database
+    for key, data in fake_database.items():
+        if key in q_clean:
+            st.error(f"⚠️ **{query.capitalize()}** aik **100% Fake / Scam** platform hai!")
+            st.markdown(f"- **Downloads / Popularity:** {data['downloads']}")
+            st.markdown(f"- **Play Store Rating:** {data['rating']}")
+            st.markdown(f"- **Scam Ki Waja:** {data['reason']}")
             found = True
+            break
             
-    for app in real_apps_list:
-        if query_lower in app['name'].lower():
-            st.success(f"✔️ **{app['name']}** aik **100% Real** platform hai! \n- **Tareeqa:** {app['method']}")
-            found = True
-            
+    # Check in Real Database
     if not found:
-        st.warning(f"🔍 '{search_query}' ke baray meinMazeed research karein. Agar yeh app ya website kaam karne ke badlay pehle 'Investment' ya 'Advance Fee' maange toh woh 100% fake hai!")
+        for key, data in real_database.items():
+            if key in q_clean:
+                st.success(f"✔️ **{query.capitalize()}** aik **100% Real aur Trusted** platform hai!")
+                st.markdown(f"- **Users / Scale:** {data['users']}")
+                st.markdown(f"- **Rating:** {data['rating']}")
+                st.markdown(f"- **Earning / Kaam Ka Tareeqa:** {data['method']}")
+                found = True
+                break
+                
+    # Fallback Smart Check for unlisted names
+    if not found:
+        # General safety check keywords
+        if any(w in q_clean for w in ["invest", "fee", "deposit", "prediction", "task", "bonus", "shart"]):
+            st.error(f"⚠️ **{query}** ke baray mein ahtiyat karein! Aisi apps jo pehle investment ya fee mangti hain, woh **100% Scam** hoti hain.")
+        else:
+            st.info(f"🔍 **{query}** hamari direct list mein nahi hai, lekin agar yeh app kaam karne ke badlay pehle **Investment, Deposit ya Advance Tax** maange toh yeh 100% Fake hai. Agar yeh aam social media ya utility app hai toh safe ho sakti hai.")
