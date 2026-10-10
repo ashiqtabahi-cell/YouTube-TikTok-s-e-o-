@@ -40,9 +40,7 @@ st.markdown(
 )
 
 # Background Music (Autoplay & Loop)
-audio_url = (
-    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-)  # Aap yahan koi bhi achha background music link laga sakte hain
+audio_url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
 
 st.markdown(
     f"""
@@ -59,7 +57,7 @@ st.markdown(
     """
     <div class="hero-box">
         <h1>🚀 AI Social Media & SEO Master Agent</h1>
-        <p>Aapka mukammal AI-powered toolkit YouTube aur TikTok growth ke liye! Beautiful UI & Background Music Enabled 🎵</p>
+        <p>Aapka mukammal AI-powered toolkit! Beautiful UI, Background Music & Visual Templates Enabled 🎵🖼️</p>
     </div>
 """,
     unsafe_allow_html=True,
@@ -86,9 +84,13 @@ language = st.selectbox(
     "🌐 Zuban (Language):", ["Roman Urdu / Urdu", "English"]
 )
 
-# Tabs for dual features
-tab1, tab2 = st.tabs(
-    ["🎯 Single Video SEO Generator", "🤖 7-Days Content Planner Agent"]
+# Tabs for dual features + Visual Gallery
+tab1, tab2, tab3 = st.tabs(
+    [
+        "🎯 Single Video SEO Generator",
+        "🤖 7-Days Content Planner Agent",
+        "🖼️ Visual Gallery & Templates",
+    ]
 )
 
 with tab1:
@@ -285,3 +287,25 @@ with tab2:
         st.subheader("📋 7-Days Content Schedule (Agent Output):")
         st.text_area("Schedule Box", schedule_text, height=350, key="agent_out")
         st.caption("Aap is poore schedule ko aik click mein copy kar sakte hain!")
+
+with tab3:
+  st.subheader("🖼️ Visual Gallery & Thumbnail Templates")
+  st.write(
+      "Yahan aap apni video ke liye alag-alag categories ke behtareen"
+      " thumbnail styles aur design ideas dekh sakte hain [cite:"
+      " watermarked_img_2894656666853911759.jpg]:"
+  )
+
+  # Displaying the curated visual inspiration template
+  st.image(
+      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
+      caption="Creator Hub - Professional Thumbnail & Visual Inspirations",
+      use_container_width=True,
+  )
+
+  st.markdown("""
+        ### 💡 Professional Thumbnail Tips:
+        * **High Contrast Colors:** Bright colors (Yellow, Red, Neon Green) ka istemal karein taake mobile screen par nazar aaye.
+        * **Clear Bold Text:** Thumbnail par kam se kam alfaaz likhein jo parhne mein asan hon.
+        * **Expressive Faces:** Agar mumkin ho toh video ke topic ke mutabiq emotional expression wali tasveer lagayein.
+    """)
