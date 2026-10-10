@@ -2,81 +2,115 @@ import streamlit as st
 
 # Page configuration
 st.set_page_config(
-    page_title="Universal YouTube & TikTok SEO Generator",
-    page_icon="🌍",
-    layout="centered",
+    page_title="Video Upload & SEO Generator", page_icon="🚀", layout="centered"
 )
 
-st.title("🌍 Universal Multi-Language SEO Generator")
+st.title("🚀 Video Upload & Universal SEO Generator")
 st.write(
-    "Duniya ki kisi bhi zuban mein apnay video ke liye Titles, Detailed"
-    " Descriptions, aur Tags generate karein!"
+    "Apni video upload karein aur uske liye professional Titles, Descriptions,"
+    " aur Tags hasil karein!"
 )
 
-# User inputs
-topic = st.text_input(
-    "Apnay video ka topic ya title kisi bhi zuban mein likhein:",
-    placeholder="e.g., Pakistan ka mustaqbil, How to code in Python, إلخ",
+# 1. Video File Uploader
+uploaded_file = st.file_uploader(
+    "Apni video file yahan upload karein:", type=["mp4", "mov", "avi", "mkv"]
 )
+
 platform = st.selectbox("Platform chunein:", ["YouTube", "TikTok"])
+language = st.selectbox(
+    "Zuban (Language) chunein:", ["Roman Urdu / Urdu", "English"]
+)
 
-if st.button("Generate Universal SEO"):
-  if topic.strip() == "":
-    st.warning("Pehle koi topic ya title zaroor likhein!")
-  else:
-    with st.spinner(
-        "Har zuban ke liye behtareen SEO content taiyar ho raha hai..."
-    ):
-      st.success("🎉 Aapka mukammal SEO content taiyar hai!")
+if uploaded_file is not None:
+  # Video ki basic details dikhana
+  file_details = {
+      "FileName": uploaded_file.name,
+      "FileType": uploaded_file.type,
+      "FileSize": f"{uploaded_file.size / (1024*1024):.2f} MB",
+  }
 
-      clean_topic = topic.strip()
+  st.success("🎉 Video kamyabi ke sath upload ho gayi hai!")
+
+  with st.expander("📁 Video ki Maloomat (Metadata) dekhein"):
+    st.json(file_details)
+
+  # Video ke naam se topic nikal kar SEO generate karna
+  raw_name = uploaded_file.name.rsplit(".", 1)[0]
+  clean_topic = raw_name.replace("_", " ").replace("-", " ")
+
+  if st.button("Generate Video SEO"):
+    with st.spinner("Video ke liye behtareen SEO taiyar ho raha hai..."):
+
       tag_topic = clean_topic.replace(" ", "")
 
       if platform == "YouTube":
-        st.subheader("📌 YouTube Titles (Catchy & SEO Friendly):")
-        st.write(
-            f"1. Complete Guide to {clean_topic} (2026 Ultimate Guide)\n2. Why"
-            f" Everyone is Talking About {clean_topic}! (Must Watch)\n3. How to"
-            f" Master {clean_topic} Step-by-Step"
-        )
+        st.subheader("📌 YouTube Titles:")
+        if language == "Roman Urdu / Urdu":
+          st.write(
+              f"1. {clean_topic} - Mukammal Video (2026)\n2. Is video mein"
+              f" dekhein {clean_topic} ki haqeeqat!\n3. {clean_topic} ki"
+              " behtareen tafseel"
+          )
+        else:
+          st.write(
+              f"1. Complete Guide to {clean_topic} (2026)\n2. Everything You"
+              f" Need to Know About {clean_topic}\n3. Mastering {clean_topic}"
+              " Step-by-Step"
+          )
 
-        st.subheader("📝 Detailed YouTube Description:")
-        st.write(
-            f"Is video mein hum tafseel se baat karenge **{clean_topic}** ke"
-            " baray mein. Agar aap is topic ko mukammal taur par samajhna"
-            " chahte hain, toh yeh video aakhir tak lazmi dekhein. Humne isme"
-            " tamam zaroori points aur secrets share kiye hain.\n\nTimestamps:\n0:00"
-            f" - Introduction\n1:15 - What is {clean_topic}?\n4:30 - Core"
-            " Concepts & Strategy\n8:00 - Conclusion & Final Thoughts\n\nVideo"
-            " pasand aaye toh Like karein aur channel ko subscribe karna na"
-            " bhulein!"
-        )
+        st.subheader("📝 YouTube Description:")
+        if language == "Roman Urdu / Urdu":
+          st.write(
+              f"Aapki upload ki gayi video (**{clean_topic}**) ke mutabiq yeh"
+              " description hai. Is video mein humne tamam zaroori pehluon par"
+              " baat ki hai. Video pasand aaye toh like aur channel ko subscribe"
+              f" zaroor karein!\n\nFile Name: {uploaded_file.name}\nSize:"
+              f" {file_details['FileSize']}\n\nTimestamps:\n0:00 - Intro\n1:30"
+              " - Main Topic\n5:00 - Conclusion"
+          )
+        else:
+          st.write(
+              f"Welcome to this video about **{clean_topic}**. We cover all"
+              f" essential details and insights.\n\nFile Name:"
+              f" {uploaded_file.name}\nSize:"
+              f" {file_details['FileSize']}\n\nTimestamps:\n0:00 -"
+              " Introduction\n1:30 - Core Details\n5:00 - Summary"
+          )
 
-        st.subheader("🏷️ Optimized YouTube Tags:")
+        st.subheader("🏷️ YouTube Tags:")
         st.write(
-            f"{clean_topic}, how to learn {clean_topic}, {clean_topic} tutorial,"
-            f" viral {clean_topic}, {clean_topic} 2026, trending topics,"
-            f" complete guide {clean_topic}"
+            f"{clean_topic}, {clean_topic} video, upload {clean_topic}, viral"
+            f" {clean_topic}, youtube growth 2026, trending"
         )
 
       else:  # TikTok
         st.subheader("📌 TikTok Viral Titles / Hooks:")
-        st.write(
-            f"1. Yeh secret koi nahi batayega about {clean_topic}! 🤫\n2. How I"
-            f" mastered {clean_topic} in record time! 🚀\n3. Stop making this"
-            f" mistake with {clean_topic} ❌"
-        )
+        if language == "Roman Urdu / Urdu":
+          st.write(
+              f"1. {clean_topic} ki yeh video miss mat karna! 🤫\n2. Amazing"
+              f" moments from {clean_topic} 🚀\n3. {clean_topic} ka asal raaz ❌"
+          )
+        else:
+          st.write(
+              f"1. You won't believe this about {clean_topic}! 🤫\n2. Amazing"
+              f" insights on {clean_topic} 🚀\n3. The truth about {clean_topic}"
+              " ❌"
+          )
 
         st.subheader("📝 TikTok Caption & Description:")
         st.write(
-            f"Aapka is baray mein kya khayal hai? {clean_topic} ki mukammal"
-            " tafseel comments mein batayein! Watch till the end for amazing"
-            f" results. 🔥 #{clean_topic.replace(' ', '')}"
+            f"New video uploaded: {clean_topic}! Watch till the end and share"
+            f" your thoughts in the comments. 🔥 File: {uploaded_file.name}"
         )
 
         st.subheader("🏷️ TikTok Hashtags:")
         st.write(
-            f"#viral #{tag_topic} #trending #foryoupage #foryou #growthhacks"
-            f" #learnontiktok #viral{tag_topic} #trendingvideo"
-          )
-          
+            f"#tiktok #viral #{tag_topic} #trending #foryoupage #foryou"
+            f" #uploadvideo #viral{tag_topic}"
+        )
+else:
+  st.info(
+      "👆 Pehle upar diye gaye button se apni video (MP4/MOV) select karke upload"
+      " karein."
+    )
+                  
