@@ -7,19 +7,71 @@ st.set_page_config(
     layout="centered",
 )
 
-st.title("🚀 AI Social Media & SEO Master Agent")
-st.write(
-    "Apna platform aur niche chunein. Aap chahein toh aik single video ka SEO"
-    " banayein ya phir pure 7 din ka Content Schedule plan karein!"
+# Custom CSS for Beautiful UI & Background Styling
+st.markdown(
+    """
+    <style>
+    .main {
+        background-color: #f8f9fa;
+    }
+    .stButton>button {
+        width: 100%;
+        background-color: #ff4b4b;
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 10px;
+    }
+    .stButton>button:hover {
+        background-color: #ff2222;
+        color: white;
+    }
+    .hero-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 25px;
+        border-radius: 12px;
+        color: white;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    </style>
+""",
+    unsafe_allow_html=True,
+)
+
+# Background Music (Autoplay & Loop)
+audio_url = (
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+)  # Aap yahan koi bhi achha background music link laga sakte hain
+
+st.markdown(
+    f"""
+    <audio autoplay loop style="display:none;">
+        <source src="{audio_url}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+""",
+    unsafe_allow_html=True,
+)
+
+# Beautiful Hero Banner Template
+st.markdown(
+    """
+    <div class="hero-box">
+        <h1>🚀 AI Social Media & SEO Master Agent</h1>
+        <p>Aapka mukammal AI-powered toolkit YouTube aur TikTok growth ke liye! Beautiful UI & Background Music Enabled 🎵</p>
+    </div>
+""",
+    unsafe_allow_html=True,
 )
 
 # Global inputs
 col1, col2 = st.columns(2)
 with col1:
-  platform = st.selectbox("Platform chunein:", ["YouTube", "TikTok"])
+  platform = st.selectbox("🎯 Platform chunein:", ["YouTube", "TikTok"])
 with col2:
   category = st.selectbox(
-      "Niche / Category:",
+      "📂 Niche / Category:",
       [
           "Tech & Coding",
           "Vlogs & Lifestyle",
@@ -31,8 +83,8 @@ with col2:
   )
 
 language = st.selectbox(
-    "Zuban (Language):", ["Roman Urdu / Urdu", "English"]
-  )
+    "🌐 Zuban (Language):", ["Roman Urdu / Urdu", "English"]
+)
 
 # Tabs for dual features
 tab1, tab2 = st.tabs(
@@ -47,7 +99,7 @@ with tab1:
       key="seo_topic",
   )
 
-  if st.button("🚀 Generate Professional SEO"):
+  if st.button("🚀 Generate Professional SEO", key="btn_seo"):
     if topic.strip() == "":
       st.warning("Pehle koi topic ya title zaroor likhein!")
     else:
@@ -57,7 +109,7 @@ with tab1:
 
         st.success("🎉 Aapka smart SEO content tayar hai!")
         st.info(
-            "📊 **SEO Optimization Score:** 96/100 (High Rank Potential for"
+            f"📊 **SEO Optimization Score:** 96/100 (High Rank Potential for"
             f" {category})"
         )
 
@@ -148,7 +200,7 @@ with tab2:
       key="agent_focus",
   )
 
-  if st.button("🤖 Run Content Planner Agent"):
+  if st.button("🤖 Run Content Planner Agent", key="btn_agent"):
     if brand_focus.strip() == "":
       st.warning("Pehle apne channel ya page ka naam/focus zaroor likhein!")
     else:
@@ -233,4 +285,3 @@ with tab2:
         st.subheader("📋 7-Days Content Schedule (Agent Output):")
         st.text_area("Schedule Box", schedule_text, height=350, key="agent_out")
         st.caption("Aap is poore schedule ko aik click mein copy kar sakte hain!")
-    
