@@ -1,4 +1,23 @@
-import streamlit as st
+import streamlit as stimport streamlit as st
+import streamlit.components.v1 as components
+
+# --- Google Analytics Tracking ---
+ga_code = """
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MWB5X5SBW9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MWB5X5SBW9');
+</script>
+"""
+components.html(ga_code, height=0)
+
+# --- Aapka baqi ka code yahan se shuru hoga ---
+st.title("Kisi bhi App ya Website ki Sachai Check Karein")
+# ... baqi saari app ka code ...
+
 
 # Page Configuration
 st.set_page_config(page_title="Online Earning Reality Checker", page_icon="🛡️", layout="wide")
